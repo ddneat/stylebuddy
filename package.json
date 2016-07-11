@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha -u tdd ./src/*.test.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test-ci": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",

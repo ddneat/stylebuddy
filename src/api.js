@@ -6,7 +6,7 @@ const render = (obj) => (
   Object.keys(obj).map((selector) => {
     const properties = renderProperties(obj[selector]);
     return `${selector}{${properties}}`;
-  })
+  }).join('')
 );
 
 module.exports = () => ({

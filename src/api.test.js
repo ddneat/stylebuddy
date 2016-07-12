@@ -9,5 +9,5 @@ test('api.render returns the parsed css', () => {
     }
   };
 
-  assert.ok(api.render(input), 'body{background:"black";}');
+  assert.deepEqual(api.render(input), 'body{background:"black";}');
 });

@@ -1,1 +1,3 @@
-module.exports = () => true;
+module.exports = () => ({
+  render: () => 'body{background:black;}'
+});

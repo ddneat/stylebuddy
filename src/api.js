@@ -1,3 +1,14 @@
+const renderProperties = (selector) => (
+  Object.keys(selector).map((property) => `${property}:"${selector[property]}";`)
+);
+
+const render = (obj) => (
+  Object.keys(obj).map((selector) => {
+    const properties = renderProperties(obj[selector]);
+    return `${selector}{${properties}}`;
+  })
+);
+
 module.exports = () => ({
-  render: () => 'body{background:black;}'
+  render
 });

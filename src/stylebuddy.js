@@ -54,16 +54,16 @@ const prepareBlock = block => {
   };
 };
 
-const render = obj => (
-  Object.keys(obj).map(selector => {
+function render(obj) {
+  return Object.keys(obj).map(selector => {
     const { styleProperties, pseudoSelectors, atRules } = prepareBlock(obj[selector]);
     return (
       createRuleSet(selector, renderStyleProperties(styleProperties).join('')) +
       renderPseudoSelectors(pseudoSelectors, selector).join('') +
       renderAtRules(atRules, selector)
     );
-  }).join('')
-);
+  }).join('');
+}
 
 const create = (style) => ({
   render: () => render(style),

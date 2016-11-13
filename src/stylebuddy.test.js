@@ -1,5 +1,5 @@
 const assert = require('assert');
-const stylebuddy = require('./api');
+const stylebuddy = require('./stylebuddy');
 
 test('api.render returns the parsed css', () => {
   const input = {

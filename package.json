@@ -2,7 +2,7 @@
   "name": "stylebuddy",
   "version": "0.0.1",
   "description": "Generate CSS from JSON",
-  "main": "index.js",
+  "main": "src/stylebuddy.js",
   "scripts": {
     "test": "mocha -u tdd ./src/*.test.js",
     "lint": "eslint src",

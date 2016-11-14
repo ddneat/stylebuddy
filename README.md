@@ -7,7 +7,7 @@ __Generate CSS from JSON without any additional dependencies:__
 - Supports at-rules like `media queries`
 - Supports pseudo selectors like `:hover`, `:focus`, `:before` etc.
 - Can be used for server side rendering
-- Converts camel case property names to hypen notation
+- Converts camel case property names to hyphen notation
 - No dependencies
 - Tiny (<2kb, about 600bytes uglified and gzipped)
 

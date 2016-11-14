@@ -6,7 +6,7 @@ Generate CSS from JSON
 
 ## Example
 
-```javascript`
+```javascript
 import stylebuddy from 'stylebuddy';
 
 const desktop = '@media screen and (min-width:720px)';

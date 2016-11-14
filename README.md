@@ -2,7 +2,14 @@
 
 [![Build Status](https://travis-ci.org/davidspinat/stylebuddy.svg)](https://travis-ci.org/davidspinat/stylebuddy)
 
-Generate CSS from JSON
+__Generate CSS from JSON without any additional dependencies:__
+
+- Supports at-rules like `media queries`
+- Supports pseudo selectors like `:hover`, `:focus`, `:before` etc.
+- Can be used for server side rendering
+- Converts camel case property names to hypen notation
+- No dependencies
+- Tiny (<2kb, about 600bytes uglified and gzipped)
 
 ## Example
 

@@ -1,7 +1,7 @@
 const assert = require('assert');
 const stylebuddy = require('./stylebuddy');
 
-test('api.render returns the parsed css', () => {
+test('render returns the parsed css', () => {
   const input = {
     body: {
       background: 'black',
@@ -11,7 +11,7 @@ test('api.render returns the parsed css', () => {
   assert.equal(stylebuddy.create(input).render(), 'body{background:black;}');
 });
 
-test('api.render supports pseudo selectors', () => {
+test('render supports pseudo selectors', () => {
   const input = {
     button: {
       background: 'yellow',
@@ -27,7 +27,7 @@ test('api.render supports pseudo selectors', () => {
   );
 });
 
-test('api.render converts camel case properties into dash hyphen', () => {
+test('render converts camel case properties into dash hyphen', () => {
   const input = {
     button: {
       background: '#fff',
@@ -38,7 +38,7 @@ test('api.render converts camel case properties into dash hyphen', () => {
   assert.equal(stylebuddy.create(input).render(), 'button{background:#fff;border-color:black;}');
 });
 
-test('api.render supports media queries', () => {
+test('render supports media queries', () => {
   const input = {
     body: {
       '@media screen and (min-width:720px)': {
@@ -53,7 +53,7 @@ test('api.render supports media queries', () => {
   );
 });
 
-test('api.render throws when media queries are nested within a pseudo selector', () => {
+test('render throws when media queries are nested within a pseudo selector', () => {
   const input = {
     body: {
       ':hover': {
@@ -67,7 +67,7 @@ test('api.render throws when media queries are nested within a pseudo selector',
   assert.throws(() => stylebuddy.create(input).render(), /At-rule nested in pseudo selector/);
 });
 
-test('api.render supports media queries containing a pseudo selector', () => {
+test('render supports media queries containing a pseudo selector', () => {
   const input = {
     body: {
       '@media screen and (min-width:720px)': {
@@ -84,7 +84,7 @@ test('api.render supports media queries containing a pseudo selector', () => {
   );
 });
 
-test('api.render supports nested media queries', () => {
+test('render supports nested media queries', () => {
   const input = {
     body: {
       '@media screen': {
@@ -99,5 +99,31 @@ test('api.render supports nested media queries', () => {
   assert.equal(
     stylebuddy.create(input).render(),
     '@media screen{body{background:black;}@media (min-width:700px){body{background:red;}}}'
+  );
+});
+
+test('render integration example', () => {
+  const desktop = '@media screen and (min-width:720px)';
+
+  const input = {
+    component: {
+      background: '#ccc',
+      ':hover': {
+        background: '#777',
+      },
+      [desktop]: {
+        fontSize: 20,
+        ':hover': {
+          background: '#333',
+        },
+      },
+    },
+  };
+
+  assert.equal(
+    stylebuddy.create(input).render(),
+    'component{background:#ccc;}component:hover{background:#777;}' +
+    '@media screen and (min-width:720px){component{font-size:20;}' +
+    'component:hover{background:#333;}}'
   );
 });

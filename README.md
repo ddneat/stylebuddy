@@ -9,7 +9,7 @@ __Generate CSS from JSON without any additional dependencies:__
 - Can be used for server side rendering
 - Converts camel case property names to hyphen notation
 - No dependencies
-- Tiny (<2kb, about 600bytes uglified and gzipped)
+- Tiny (<2kb, about 600bytes minified and gzipped)
 
 ## Example
 

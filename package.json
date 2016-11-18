@@ -13,7 +13,18 @@
     "url": "git+https://github.com/davidspinat/stylebuddy.git"
   },
   "keywords": [
-    "CSS"
+    "css",
+    "parser",
+    "json",
+    "inline-styles",
+    "transform",
+    "preprocessor",
+    "simple",
+    "react",
+    "inline",
+    "styles",
+    "encapsulation",
+    "component"
   ],
   "author": "davidspinat",
   "license": "ISC",

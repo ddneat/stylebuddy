@@ -6,6 +6,7 @@ __Generate CSS from JSON without any additional dependencies:__
 
 - Supports at-rules like `media queries`
 - Supports pseudo selectors like `:hover`, `:focus`, `:before` etc.
+- Supports selectors by tag, class and id (e.g.: `body,`, `.components`, `#component`)
 - Can be used for server side rendering
 - Converts camel case property names to hyphen notation
 - No dependencies
@@ -33,8 +34,9 @@ const input = {
   }
 };
 
-const buddy = stylebuddy.create(input);
-const css = buddy.render();
+const styleSheet = stylebuddy.create();
+styleSheet.add(input);
+const css = styleSheet.render();
 
 const styleNode = document.createElement('style');
 document.head.appendChild(styleNode);

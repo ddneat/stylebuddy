@@ -12,6 +12,16 @@ __Generate CSS from JSON without any additional dependencies:__
 - No dependencies
 - Tiny (2kb, about 860bytes uglified and gzipped)
 
+## Contents
+
+- [Basic Example](#basic-example)
+- [API Description](#api)
+- [Configuration](#configuration)
+- [Stylesheet Config](#stylesheet-config)
+- [Tag Selector](#tag-selector)
+- [Id Selector](#id-selector)
+- [Flexible Stylesheet](#flexible-stylesheet)
+
 ## Basic Example
 
 ```javascript
@@ -47,7 +57,7 @@ domNode.textContent = css;
 
 ### `create([, config])`
 
-Returns the styleSheet API. The optional config sets the default config values for the current instance.
+Returns a new instance of the styleSheet API. The optional config merges with the default values and will be used for the current styleSheet instance.
 
 ### `styleSheet.add(styles[, config])`
 

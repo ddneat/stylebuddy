@@ -45,12 +45,14 @@ const input = {
 };
 
 const styleSheet = stylebuddy.create();
-styleSheet.add(input);
-const css = styleSheet.render(); // ._component{background:#ccc;}.component:hover{background:#777;}@media ...
+const styles styleSheet.add(input);
+const css = styleSheet.render(); // ._component_2513881194{background:#ccc;}.component_2513881194:hover ...
 
 const styleNode = document.createElement('style');
 document.head.appendChild(styleNode);
 domNode.textContent = css;
+
+console.log(styles.component) // ._component_2513881194
 ```
 
 ## API

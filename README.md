@@ -45,7 +45,7 @@ const input = {
 };
 
 const styleSheet = stylebuddy.create();
-const styles styleSheet.add(input);
+const styles = styleSheet.add(input);
 const css = styleSheet.render(); // ._component_2513881194{background:#ccc;}.component_2513881194:hover ...
 
 const styleNode = document.createElement('style');

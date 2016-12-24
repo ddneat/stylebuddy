@@ -19,12 +19,10 @@ const getMergedConfig = (config, defaults) => {
 const createProperty = (property, value) => `${property}:${value};`;
 const createRuleSet = (selector, block) => (block !== '' ? `${selector}{${block}}` : '');
 const convertCamelCase = input => input.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-const isPseudoSelector = property => property[0] === ':';
-const isAtRule = property => property[0] === '@';
 
 const renderProperties = (selector, atRuleNotAllowed) => (
   Object.keys(selector).map(property => {
-    if (atRuleNotAllowed && isAtRule(property)) {
+    if (atRuleNotAllowed && property[0] === '@') {
       throw new Error(AT_RULE_NESTED);
     }
     return createProperty(
@@ -49,25 +47,12 @@ const renderAtRules = (atRules, selector, config, selectorsMap) => (
 );
 
 const prepareBlock = block => {
-  const pseudoSelectors = {};
-  const atRules = {};
-  const properties = {};
-
+  const types = { ':': {}, '@': {}, properties: {} };
   Object.keys(block).forEach(property => {
-    if (isPseudoSelector(property)) {
-      pseudoSelectors[property] = block[property];
-    } else if (isAtRule(property)) {
-      atRules[property] = block[property];
-    } else {
-      properties[property] = block[property];
-    }
+    const current = types[property[0]] || types.properties;
+    current[property] = block[property];
   });
-
-  return {
-    properties,
-    pseudoSelectors,
-    atRules,
-  };
+  return types;
 };
 
 const createDJB2 = str => {
@@ -88,12 +73,12 @@ const renderSelector = (selector, config, selectorsMap) => {
 
 function render(obj, config, selectorsMap) {
   const style = Object.keys(obj).map(selector => {
-    const { properties, pseudoSelectors, atRules } = prepareBlock(obj[selector]);
+    const block = prepareBlock(obj[selector]);
     const renderedSelector = renderSelector(selector, config, selectorsMap);
     return (
-      createRuleSet(renderedSelector, renderProperties(properties).join('')) +
-      renderPseudoSelectors(pseudoSelectors, renderedSelector).join('') +
-      renderAtRules(atRules, selector, config, selectorsMap)
+      createRuleSet(renderedSelector, renderProperties(block.properties).join('')) +
+      renderPseudoSelectors(block[':'], renderedSelector).join('') +
+      renderAtRules(block['@'], selector, config, selectorsMap)
     );
   }).join('');
 

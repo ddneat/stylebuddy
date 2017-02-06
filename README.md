@@ -1,4 +1,4 @@
-# Styla 🐻
+# Styla
 
 [![Build Status](https://travis-ci.org/davidspinat/styla.svg)](https://travis-ci.org/davidspinat/styla)
 

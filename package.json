@@ -1,8 +1,8 @@
 {
-  "name": "stylebuddy",
+  "name": "styla",
   "version": "0.0.1",
   "description": "Generate CSS from JSON",
-  "main": "src/stylebuddy.js",
+  "main": "src/styla.js",
   "scripts": {
     "test": "mocha -u tdd ./src/*.test.js",
     "lint": "eslint src",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidspinat/stylebuddy.git"
+    "url": "git+https://github.com/davidspinat/styla.git"
   },
   "keywords": [
     "css",
@@ -29,9 +29,9 @@
   "author": "davidspinat",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/davidspinat/stylebuddy/issues"
+    "url": "https://github.com/davidspinat/styla/issues"
   },
-  "homepage": "https://github.com/davidspinat/stylebuddy#readme",
+  "homepage": "https://github.com/davidspinat/styla#readme",
   "devDependencies": {
     "eslint": "^2.9.0",
     "eslint-config-airbnb": "^9.0.1",

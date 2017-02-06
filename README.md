@@ -1,6 +1,6 @@
-# Stylebuddy 🐻
+# Styla 🐻
 
-[![Build Status](https://travis-ci.org/davidspinat/stylebuddy.svg)](https://travis-ci.org/davidspinat/stylebuddy)
+[![Build Status](https://travis-ci.org/davidspinat/styla.svg)](https://travis-ci.org/davidspinat/styla)
 
 __Generate CSS from JSON without any additional dependencies:__
 
@@ -25,7 +25,7 @@ __Generate CSS from JSON without any additional dependencies:__
 ## Basic Example
 
 ```javascript
-import stylebuddy from 'stylebuddy';
+import styla from 'styla';
 
 const desktop = '@media screen and (min-width:720px)';
 
@@ -44,7 +44,7 @@ const input = {
   }
 };
 
-const styleSheet = stylebuddy.create();
+const styleSheet = styla.create();
 const styles = styleSheet.add(input);
 const css = styleSheet.render(); // ._component_2513881194{background:#ccc;}.component_2513881194:hover ...
 
@@ -84,7 +84,7 @@ const DEFAULT_CONFIG = {
 ## Stylesheet Config
 
 ```javascript
-import stylebuddy from 'stylebuddy';
+import styla from 'styla';
 
 const styleSheetConfig = {
   delimiter: '___',
@@ -97,7 +97,7 @@ const styles = {
   }
 };
 
-const styleSheet = stylebuddy.create(styleSheetConfig);
+const styleSheet = styla.create(styleSheetConfig);
 
 styleSheet.add(styles);
 
@@ -111,7 +111,7 @@ domNode.textContent = css;
 ## Tag Selector
 
 ```javascript
-import stylebuddy from 'stylebuddy';
+import styla from 'styla';
 
 const tagSelector = {
   body: {
@@ -119,7 +119,7 @@ const tagSelector = {
   }
 };
 
-const styleSheet = stylebuddy.create();
+const styleSheet = styla.create();
 
 styleSheet.add(tagSelector, { delimiter: '', prefix: '', appendHash: false });
 
@@ -133,7 +133,7 @@ domNode.textContent = css;
 ## Id Selector
 
 ```javascript
-import stylebuddy from 'stylebuddy';
+import styla from 'styla';
 
 const idSelector = {
   component: {
@@ -141,7 +141,7 @@ const idSelector = {
   }
 };
 
-const styleSheet = stylebuddy.create();
+const styleSheet = styla.create();
 
 styleSheet.add(idSelector, { prefix: '#', appendHash: false });
 
@@ -155,7 +155,7 @@ domNode.textContent = css;
 ## Flexible Stylesheet
 
 ```javascript
-import stylebuddy from 'stylebuddy';
+import styla from 'styla';
 
 const tagSelectors = {
   body: {
@@ -179,7 +179,7 @@ const styleSheetConfig = {
   appendHash: false
 };
 
-const styleSheet = stylebuddy.create(styleSheetConfig);
+const styleSheet = styla.create(styleSheetConfig);
 
 styleSheet.add(tagSelectors, { prefix: '', delimiter: '' });
 styleSheet.add(classSelectors, { delimiter: '___' });

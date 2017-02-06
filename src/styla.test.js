@@ -1,5 +1,5 @@
 const assert = require('assert');
-const stylebuddy = require('./stylebuddy');
+const styla = require('./styla');
 
 test('add returns the rendered selectors', () => {
   const input = {
@@ -11,7 +11,7 @@ test('add returns the rendered selectors', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
 
   assert.deepEqual(
     styleSheet.add(input),
@@ -29,7 +29,7 @@ test('add returns the rendered selectors with delimiter', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, delimiter: '___' });
+  const styleSheet = styla.create({ appendHash: false, delimiter: '___' });
 
   assert.deepEqual(
     styleSheet.add(input),
@@ -47,7 +47,7 @@ test('add returns the rendered selectors supporting tag selectors', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, delimiter: '' });
+  const styleSheet = styla.create({ appendHash: false, delimiter: '' });
 
   assert.deepEqual(
     styleSheet.add(input),
@@ -65,7 +65,7 @@ test('add returns the rendered selectors with appendHash', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: true });
+  const styleSheet = styla.create({ appendHash: true });
 
   assert.deepEqual(
     styleSheet.add(input),
@@ -83,7 +83,7 @@ test('add returns the rendered selectors with appendHash and salt', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: true, salt: 'buddy' });
+  const styleSheet = styla.create({ appendHash: true, salt: 'buddy' });
 
   assert.deepEqual(
     styleSheet.add(input),
@@ -101,7 +101,7 @@ test('add returns the rendered selectors with appendHash and delimiter', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: true, delimiter: '___' });
+  const styleSheet = styla.create({ appendHash: true, delimiter: '___' });
 
   assert.deepEqual(
     styleSheet.add(input),
@@ -119,7 +119,7 @@ test('add returns the rendered selectors with hashSelector', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, hashSelector: true });
+  const styleSheet = styla.create({ appendHash: false, hashSelector: true });
 
   assert.deepEqual(
     styleSheet.add(input),
@@ -137,7 +137,7 @@ test('add returns the rendered selectors with hashSelector and salt', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, hashSelector: true, salt: 'buddy' });
+  const styleSheet = styla.create({ appendHash: false, hashSelector: true, salt: 'buddy' });
 
   assert.deepEqual(
     styleSheet.add(input),
@@ -156,7 +156,7 @@ test('add throws when media queries are nested within a pseudo selector', () => 
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
 
   assert.throws(
     () => styleSheet.add(input),
@@ -171,7 +171,7 @@ test('render returns the parsed css', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(input);
 
   assert.equal(styleSheet.render(), '._app{background:black;}');
@@ -184,7 +184,7 @@ test('render returns the parsed css with multiple add calls', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(input, { prefix: '#' });
   styleSheet.add(input, { delimiter: '__' });
 
@@ -201,7 +201,7 @@ test('render supports pseudo selectors', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(input);
 
   assert.equal(
@@ -218,7 +218,7 @@ test('render converts camel case properties into dash hyphen', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(input);
 
   assert.equal(
@@ -236,7 +236,7 @@ test('render supports media queries', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(input);
 
   assert.equal(
@@ -256,7 +256,7 @@ test('render supports media queries containing a pseudo selector', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(input);
 
   assert.equal(
@@ -277,7 +277,7 @@ test('render supports nested media queries', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(input);
 
   assert.equal(
@@ -304,7 +304,7 @@ test('render integration example with breakpoints', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(input);
 
   assert.equal(
@@ -328,7 +328,7 @@ test('render integration example with multiple add calls', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false });
+  const styleSheet = styla.create({ appendHash: false });
   styleSheet.add(firstInput);
   styleSheet.add(secondInput);
 
@@ -345,7 +345,7 @@ test('render integration example with configured delimiter', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, delimiter: '___' });
+  const styleSheet = styla.create({ appendHash: false, delimiter: '___' });
   styleSheet.add(input);
 
   assert.equal(
@@ -361,7 +361,7 @@ test('render integration example with configured appendHash', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: true });
+  const styleSheet = styla.create({ appendHash: true });
   styleSheet.add(input);
 
   assert.equal(
@@ -377,7 +377,7 @@ test('render integration example with configured appendHash and salt', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: true, salt: 'buddy' });
+  const styleSheet = styla.create({ appendHash: true, salt: 'buddy' });
   styleSheet.add(input);
 
   assert.equal(
@@ -393,7 +393,7 @@ test('render integration example with configured appendHash and delimiter', () =
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: true, delimiter: '___' });
+  const styleSheet = styla.create({ appendHash: true, delimiter: '___' });
   styleSheet.add(input);
 
   assert.equal(
@@ -409,7 +409,7 @@ test('render integration example with configured hashSelector', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, hashSelector: true });
+  const styleSheet = styla.create({ appendHash: false, hashSelector: true });
   styleSheet.add(input);
 
   assert.equal(
@@ -425,7 +425,7 @@ test('render integration example with configured hashSelector and salt', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, hashSelector: true, salt: 'buddy' });
+  const styleSheet = styla.create({ appendHash: false, hashSelector: true, salt: 'buddy' });
   styleSheet.add(input);
 
   assert.equal(
@@ -441,7 +441,7 @@ test('render integration example with configured prefix id selector', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, prefix: '#' });
+  const styleSheet = styla.create({ appendHash: false, prefix: '#' });
   styleSheet.add(input);
 
   assert.equal(
@@ -457,7 +457,7 @@ test('render integration example supporting tag selectors', () => {
     },
   };
 
-  const styleSheet = stylebuddy.create({ appendHash: false, prefix: '', delimiter: '' });
+  const styleSheet = styla.create({ appendHash: false, prefix: '', delimiter: '' });
   styleSheet.add(input);
 
   assert.equal(

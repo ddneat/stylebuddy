@@ -25,10 +25,12 @@ const renderProperties = (selector, atRuleNotAllowed) => (
     if (atRuleNotAllowed && property[0] === '@') {
       throw new Error(AT_RULE_NESTED);
     }
-    return createProperty(
-      convertCamelCase(property),
-      selector[property]
-    );
+    return [].concat(selector[property]).map((propertyValue => (
+      createProperty(
+        convertCamelCase(property),
+        propertyValue
+      )
+    ))).join('');
   })
 );
 

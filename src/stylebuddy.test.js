@@ -227,6 +227,22 @@ test('render converts camel case properties into dash hyphen', () => {
   );
 });
 
+test('render duplicates properties when the value is an array', () => {
+  const input = {
+    component: {
+      display: ['-webkit-box', '-moz-box'],
+    },
+  };
+
+  const styleSheet = stylebuddy.create({ appendHash: false });
+  styleSheet.add(input);
+
+  assert.equal(
+    styleSheet.render(),
+    '._component{display:-webkit-box;display:-moz-box;}'
+  );
+});
+
 test('render supports media queries', () => {
   const input = {
     app: {

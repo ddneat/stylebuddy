@@ -15,6 +15,7 @@ __Generate CSS from JSON without any additional dependencies:__
 ## Contents
 
 - [Basic Example](#basic-example)
+- [Vendor Prefixes](#vendor-prefixes)
 - [API Description](#api)
 - [Configuration](#configuration)
 - [Stylesheet Config](#stylesheet-config)
@@ -53,6 +54,24 @@ document.head.appendChild(styleNode);
 domNode.textContent = css;
 
 console.log(styles.component) // ._component_2513881194
+```
+
+## Vendor Prefixes
+
+```javascript
+import stylebuddy from 'stylebuddy';
+
+const input = {
+  component: {
+    WebkitTransition: '200ms all linear',
+    display: ['-webkit-box', '-moz-box']
+  }
+}
+
+const styleSheet = stylebuddy.create();
+const styles = styleSheet.add(input);
+const css = styleSheet.render();
+// ._component_2513881194{-webkit-transition:200ms all linear;display:-webkit-box;display:-moz-box;}
 ```
 
 ## API

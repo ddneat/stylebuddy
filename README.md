@@ -66,7 +66,7 @@ const input = {
     WebkitTransition: '200ms all linear',
     display: ['-webkit-box', '-moz-box']
   }
-}
+};
 
 const styleSheet = stylebuddy.create();
 const styles = styleSheet.add(input);

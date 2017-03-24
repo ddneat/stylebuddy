@@ -5,8 +5,9 @@
 __Generate CSS from JSON without any additional dependencies:__
 
 - Supports at-rules like `media queries`
-- Supports pseudo selectors like `:hover`, `:focus`, `:before` etc.
+- Supports pseudo selectors like `:hover`, `:focus`, `:before`, etc.
 - Supports selectors by tag, class and id (e.g.: `body,`, `.components`, `#component`)
+- Supports vendor prefixes like `-webkit-transition`, `display: -moz-box`, etc.
 - Can be used for server side rendering
 - Converts camel case property names to hyphen notation
 - No dependencies
@@ -15,12 +16,12 @@ __Generate CSS from JSON without any additional dependencies:__
 ## Contents
 
 - [Basic Example](#basic-example)
-- [Vendor Prefixes](#vendor-prefixes)
 - [API Description](#api)
 - [Configuration](#configuration)
 - [Stylesheet Config](#stylesheet-config)
 - [Tag Selector](#tag-selector)
 - [Id Selector](#id-selector)
+- [Vendor Prefixes](#vendor-prefixes)
 - [Flexible Stylesheet](#flexible-stylesheet)
 
 ## Basic Example
@@ -54,24 +55,6 @@ document.head.appendChild(styleNode);
 domNode.textContent = css;
 
 console.log(styles.component) // ._component_2513881194
-```
-
-## Vendor Prefixes
-
-```javascript
-import stylebuddy from 'stylebuddy';
-
-const input = {
-  component: {
-    WebkitTransition: '200ms all linear',
-    display: ['-webkit-box', '-moz-box']
-  }
-};
-
-const styleSheet = stylebuddy.create();
-const styles = styleSheet.add(input);
-const css = styleSheet.render();
-// ._component_2513881194{-webkit-transition:200ms all linear;display:-webkit-box;display:-moz-box;}
 ```
 
 ## API
@@ -169,6 +152,24 @@ const css = styleSheet.render(); // #_component{background:#333;}
 const styleNode = document.createElement('style');
 document.head.appendChild(styleNode);
 domNode.textContent = css;
+```
+
+## Vendor Prefixes
+
+```javascript
+import stylebuddy from 'stylebuddy';
+
+const input = {
+  component: {
+    WebkitTransition: '200ms all linear',
+    display: ['-webkit-box', '-moz-box']
+  }
+};
+
+const styleSheet = stylebuddy.create();
+const styles = styleSheet.add(input);
+const css = styleSheet.render();
+// ._component_2513881194{-webkit-transition:200ms all linear;display:-webkit-box;display:-moz-box;}
 ```
 
 ## Flexible Stylesheet

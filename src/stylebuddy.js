@@ -18,6 +18,7 @@ const getMergedConfig = (config, defaults) => {
 
 const createProperty = (property, value) => `${property}:${value};`;
 const createRuleSet = (selector, block) => (block !== '' ? `${selector}{${block}}` : '');
+const prefixTitleCase = input => input.replace(/^([A-Z])/, '-$1');
 const convertCamelCase = input => input.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
 const renderProperties = (selector, atRuleNotAllowed) => (
@@ -26,7 +27,7 @@ const renderProperties = (selector, atRuleNotAllowed) => (
       throw new Error(AT_RULE_NESTED);
     }
     const values = [].concat(selector[property]);
-    const name = convertCamelCase(property);
+    const name = convertCamelCase(prefixTitleCase(property));
     return values.map((value => createProperty(name, value))).join('');
   })
 );

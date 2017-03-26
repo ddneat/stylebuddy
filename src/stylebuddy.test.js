@@ -243,6 +243,22 @@ test('render duplicates properties when the value is an array', () => {
   );
 });
 
+test('render prefixes title case properties with a hyphen', () => {
+  const input = {
+    component: {
+      WebkitTransition: '200ms all linear',
+    },
+  };
+
+  const styleSheet = stylebuddy.create({ appendHash: false });
+  styleSheet.add(input);
+
+  assert.equal(
+    styleSheet.render(),
+    '._component{-webkit-transition:200ms all linear;}'
+  );
+});
+
 test('render supports media queries', () => {
   const input = {
     app: {

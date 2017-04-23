@@ -67,11 +67,11 @@ Returns a new instance of the styleSheet API. The optional config merges with th
 
 ### `styleSheet.add(styles[, config])`
 
-The passed config will be merged with the current instance config.
+Returns an object with the generated style identifiers. The passed config will be merged with the styleSheet config.
 
 ### `styleSheet.render()`
 
-Returns the CSS string from the passes styles.
+Returns the CSS string of the current styleSheet instance.
 
 ## Configuration
 
@@ -102,9 +102,7 @@ const styles = {
 };
 
 const styleSheet = stylebuddy.create(styleSheetConfig);
-
 styleSheet.add(styles);
-
 const css = styleSheet.render();
 // .___components{background:#ccc;}
 ```
@@ -121,9 +119,7 @@ const tagSelector = {
 };
 
 const styleSheet = stylebuddy.create();
-
 styleSheet.add(tagSelector, { delimiter: '', prefix: '', appendHash: false });
-
 const css = styleSheet.render();
 // body{background:#ccc;}
 ```
@@ -140,9 +136,7 @@ const idSelector = {
 };
 
 const styleSheet = stylebuddy.create();
-
 styleSheet.add(idSelector, { prefix: '#', appendHash: false });
-
 const css = styleSheet.render();
 // #_component{background:#333;}
 ```

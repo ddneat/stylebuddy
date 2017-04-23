@@ -48,13 +48,15 @@ const input = {
 
 const styleSheet = stylebuddy.create();
 const styles = styleSheet.add(input);
-const css = styleSheet.render(); // ._component_2513881194{background:#ccc;}.component_2513881194:hover ...
+const css = styleSheet.render();
+// ._component_2513881194{background:#ccc;}.component_2513881194:hover ...
 
 const styleNode = document.createElement('style');
 document.head.appendChild(styleNode);
 domNode.textContent = css;
 
-console.log(styles.component) // ._component_2513881194
+console.log(styles.component);
+// ._component_2513881194
 ```
 
 ## API
@@ -103,11 +105,8 @@ const styleSheet = stylebuddy.create(styleSheetConfig);
 
 styleSheet.add(styles);
 
-const css = styleSheet.render(); // .___components{background:#ccc;}
-
-const styleNode = document.createElement('style');
-document.head.appendChild(styleNode);
-domNode.textContent = css;
+const css = styleSheet.render();
+// .___components{background:#ccc;}
 ```
 
 ## Tag Selector
@@ -125,11 +124,8 @@ const styleSheet = stylebuddy.create();
 
 styleSheet.add(tagSelector, { delimiter: '', prefix: '', appendHash: false });
 
-const css = styleSheet.render(); // body{background:#ccc;}
-
-const styleNode = document.createElement('style');
-document.head.appendChild(styleNode);
-domNode.textContent = css;
+const css = styleSheet.render();
+// body{background:#ccc;}
 ```
 
 ## Id Selector
@@ -147,11 +143,8 @@ const styleSheet = stylebuddy.create();
 
 styleSheet.add(idSelector, { prefix: '#', appendHash: false });
 
-const css = styleSheet.render(); // #_component{background:#333;}
-
-const styleNode = document.createElement('style');
-document.head.appendChild(styleNode);
-domNode.textContent = css;
+const css = styleSheet.render();
+// #_component{background:#333;}
 ```
 
 ## Vendor Prefixes
@@ -205,7 +198,8 @@ styleSheet.add(tagSelectors, { prefix: '', delimiter: '' });
 styleSheet.add(classSelectors, { delimiter: '___' });
 styleSheet.add(idSelectors, { prefix: '#' });
 
-const css = styleSheet.render(); // body{background:#ccc;}.___components{background:#999;}#_component{background:#333;}
+const css = styleSheet.render();
+// body{background:#ccc;}.___components{background:#999;}#_component{background:#333;}
 
 const styleNode = document.createElement('style');
 document.head.appendChild(styleNode);

@@ -15,6 +15,7 @@ __Generate CSS from JSON without any additional dependencies:__
 
 ## Contents
 
+- [Usage](#usage)
 - [Basic Example](#basic-example)
 - [API Description](#api)
 - [Configuration](#configuration)
@@ -23,6 +24,12 @@ __Generate CSS from JSON without any additional dependencies:__
 - [Id Selector](#id-selector)
 - [Vendor Prefixes](#vendor-prefixes)
 - [Flexible Stylesheet](#flexible-stylesheet)
+
+## Usage
+
+```console
+npm install --save stylebuddy
+```
 
 ## Basic Example
 

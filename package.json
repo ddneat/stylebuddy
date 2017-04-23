@@ -1,6 +1,6 @@
 {
   "name": "stylebuddy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate encapsulated css inline styles which are extremely configurable",
   "main": "src/stylebuddy.js",
   "scripts": {

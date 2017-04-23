@@ -1,3 +1,4 @@
+const test = require('tropic');
 const assert = require('assert');
 const stylebuddy = require('./stylebuddy');
 

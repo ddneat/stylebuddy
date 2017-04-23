@@ -4,7 +4,7 @@
   "description": "Generate CSS from JSON",
   "main": "src/stylebuddy.js",
   "scripts": {
-    "test": "mocha -u tdd ./src/*.test.js",
+    "test": "tropic ./src/*.test.js",
     "lint": "eslint src",
     "test-ci": "npm run lint && npm test"
   },
@@ -38,6 +38,6 @@
     "eslint-plugin-import": "^1.10.2",
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "eslint-plugin-react": "^5.2.2",
-    "mocha": "^2.5.3"
+    "tropic": "^0.4.0"
   }
 }

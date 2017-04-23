@@ -1,7 +1,7 @@
 {
   "name": "stylebuddy",
   "version": "1.0.0",
-  "description": "Generate CSS from JSON",
+  "description": "Generate encapsulated css inline styles which are extremely configurable",
   "main": "src/stylebuddy.js",
   "scripts": {
     "test": "tropic ./src/*.test.js",
@@ -24,6 +24,12 @@
     "inline",
     "styles",
     "encapsulation",
+    "vendor-prefix",
+    "media-queries",
+    "tag-selector",
+    "class-selector",
+    "id-selector",
+    "server-side",
     "component"
   ],
   "author": "davidspinat",

@@ -10,7 +10,7 @@
     "prebuild": "rimraf ./dist && mkdirp ./dist",
     "build": "babel src/stylebuddy.js --out-file dist/stylebuddy.js",
     "preversion": "npm run test-ci",
-    "version": "npm run build"
+    "version": "npm run build && git add dist"
   },
   "repository": {
     "type": "git",

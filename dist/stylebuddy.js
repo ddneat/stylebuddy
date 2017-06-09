@@ -48,7 +48,7 @@ var renderProperties = function renderProperties(selector, atRuleNotAllowed) {
 
 var renderPseudoSelectors = function renderPseudoSelectors(pseudoSelectors, element) {
   return Object.keys(pseudoSelectors).map(function (selector) {
-    return createRuleSet(element + selector, renderProperties(pseudoSelectors[selector], true));
+    return createRuleSet(element + selector, renderProperties(pseudoSelectors[selector], true).join(''));
   });
 };
 

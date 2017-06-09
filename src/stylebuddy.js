@@ -35,7 +35,7 @@ const renderProperties = (selector, atRuleNotAllowed) => (
 const renderPseudoSelectors = (pseudoSelectors, element) => (
   Object.keys(pseudoSelectors).map(selector => createRuleSet(
     element + selector,
-    renderProperties(pseudoSelectors[selector], true)
+    renderProperties(pseudoSelectors[selector], true).join('')
   ))
 );
 

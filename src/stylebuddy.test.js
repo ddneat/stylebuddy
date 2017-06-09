@@ -198,6 +198,7 @@ test('render supports pseudo selectors', () => {
       background: 'yellow',
       ':hover': {
         background: 'blue',
+        color: 'black',
       },
     },
   };
@@ -207,7 +208,7 @@ test('render supports pseudo selectors', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._component{background:yellow;}._component:hover{background:blue;}'
+    '._component{background:yellow;}._component:hover{background:blue;color:black;}'
   );
 });
 

@@ -1,7 +1,5 @@
 # Stylebuddy 🐻
 
-[![Build Status](https://travis-ci.org/davidspinat/stylebuddy.svg)](https://travis-ci.org/davidspinat/stylebuddy)
-
 __Generate CSS from JSON without any additional dependencies:__
 
 - Supports at-rules like `media queries`

@@ -1,11 +1,18 @@
-'use strict';
+"use strict";
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/**
+ * Stylebuddy
+ * Copyright (c) 2017 David Neubauer, @ddneat. https://ddne.at
+ *
+ * This source code is licensed under the ISC license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 var AT_RULE_NESTED = 'At-rule nested in pseudo selector';
-
 var DEFAULT_CONFIG = {
-  prefix: '.', // e.g.: enforce css classes
+  prefix: '.',
+  // e.g.: enforce css classes
   delimiter: '_',
   salt: '',
   hashSelector: false,
@@ -21,14 +28,17 @@ var getMergedConfig = function getMergedConfig(config, defaults) {
 };
 
 var createProperty = function createProperty(property, value) {
-  return property + ':' + value + ';';
+  return "".concat(property, ":").concat(value, ";");
 };
+
 var createRuleSet = function createRuleSet(selector, block) {
-  return block !== '' ? selector + '{' + block + '}' : '';
+  return block !== '' ? "".concat(selector, "{").concat(block, "}") : '';
 };
+
 var prefixTitleCase = function prefixTitleCase(input) {
   return input.replace(/^([A-Z])/, '-$1');
 };
+
 var convertCamelCase = function convertCamelCase(input) {
   return input.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 };
@@ -38,6 +48,7 @@ var renderProperties = function renderProperties(selector, atRuleNotAllowed) {
     if (atRuleNotAllowed && property[0] === '@') {
       throw new Error(AT_RULE_NESTED);
     }
+
     var values = [].concat(selector[property]);
     var name = convertCamelCase(prefixTitleCase(property));
     return values.map(function (value) {
@@ -59,7 +70,11 @@ var renderAtRules = function renderAtRules(atRules, selector, config, selectorsM
 };
 
 var prepareBlock = function prepareBlock(block) {
-  var types = { ':': {}, '@': {}, properties: {} };
+  var types = {
+    ':': {},
+    '@': {},
+    properties: {}
+  };
   Object.keys(block).forEach(function (property) {
     var current = types[property[0]] || types.properties;
     current[property] = block[property];
@@ -70,9 +85,12 @@ var prepareBlock = function prepareBlock(block) {
 var createDJB2 = function createDJB2(str) {
   var i = str.length;
   var hash = 5381;
+
   while (i) {
     hash = hash * 33 ^ str.charCodeAt(--i);
-  }return hash >>> 0;
+  }
+
+  return hash >>> 0;
 };
 
 var renderSelector = function renderSelector(selector, config, selectorsMap) {
@@ -81,12 +99,11 @@ var renderSelector = function renderSelector(selector, config, selectorsMap) {
       appendHash = config.appendHash,
       delimiter = config.delimiter,
       salt = config.salt;
-
   var hashed = hashSelector ? createDJB2(selector + salt) : selector;
-  var appended = appendHash ? '' + hashed + delimiter + createDJB2(hashed + salt) : hashed;
-  var delimited = '' + delimiter + appended;
+  var appended = appendHash ? "".concat(hashed).concat(delimiter).concat(createDJB2(hashed + salt)) : hashed;
+  var delimited = "".concat(delimiter).concat(appended);
   selectorsMap[selector] = delimited;
-  return '' + prefix + delimited;
+  return "".concat(prefix).concat(delimited);
 };
 
 function render(obj, config, selectorsMap) {
@@ -95,7 +112,6 @@ function render(obj, config, selectorsMap) {
     var renderedSelector = renderSelector(selector, config, selectorsMap);
     return createRuleSet(renderedSelector, renderProperties(block.properties).join('')) + renderPseudoSelectors(block[':'], renderedSelector).join('') + renderAtRules(block['@'], selector, config, selectorsMap);
   }).join('');
-
   return {
     style: style,
     selectors: selectorsMap
@@ -104,14 +120,11 @@ function render(obj, config, selectorsMap) {
 
 var create = function create() {
   var baseConfig = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
   var mergedBaseConfig = getMergedConfig(baseConfig, DEFAULT_CONFIG);
   var styles = [];
-
   return {
     add: function add(styleObj) {
       var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
       var currentConfig = getMergedConfig(config, mergedBaseConfig);
 
       var _render2 = render(styleObj, currentConfig, {}),

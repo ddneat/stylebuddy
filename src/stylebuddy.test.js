@@ -16,7 +16,7 @@ test('add returns the rendered selectors', () => {
 
   assert.deepEqual(
     styleSheet.add(input),
-    { app: '_app', component: '_component' }
+    { app: '_app', component: '_component' },
   );
 });
 
@@ -34,7 +34,7 @@ test('add returns the rendered selectors with delimiter', () => {
 
   assert.deepEqual(
     styleSheet.add(input),
-    { app: '___app', component: '___component' }
+    { app: '___app', component: '___component' },
   );
 });
 
@@ -52,7 +52,7 @@ test('add returns the rendered selectors supporting tag selectors', () => {
 
   assert.deepEqual(
     styleSheet.add(input),
-    { body: 'body', button: 'button' }
+    { body: 'body', button: 'button' },
   );
 });
 
@@ -70,7 +70,7 @@ test('add returns the rendered selectors with appendHash', () => {
 
   assert.deepEqual(
     styleSheet.add(input),
-    { app: '_app_193425604', component: '_component_2513881194' }
+    { app: '_app_193425604', component: '_component_2513881194' },
   );
 });
 
@@ -88,7 +88,7 @@ test('add returns the rendered selectors with appendHash and salt', () => {
 
   assert.deepEqual(
     styleSheet.add(input),
-    { app: '_app_3136795498', component: '_component_1892634500' }
+    { app: '_app_3136795498', component: '_component_1892634500' },
   );
 });
 
@@ -106,7 +106,7 @@ test('add returns the rendered selectors with appendHash and delimiter', () => {
 
   assert.deepEqual(
     styleSheet.add(input),
-    { app: '___app___193425604', component: '___component___2513881194' }
+    { app: '___app___193425604', component: '___component___2513881194' },
   );
 });
 
@@ -124,7 +124,7 @@ test('add returns the rendered selectors with hashSelector', () => {
 
   assert.deepEqual(
     styleSheet.add(input),
-    { app: '_193425604', component: '_2513881194' }
+    { app: '_193425604', component: '_2513881194' },
   );
 });
 
@@ -142,7 +142,7 @@ test('add returns the rendered selectors with hashSelector and salt', () => {
 
   assert.deepEqual(
     styleSheet.add(input),
-    { app: '_3136795498', component: '_1892634500' }
+    { app: '_3136795498', component: '_1892634500' },
   );
 });
 
@@ -161,7 +161,7 @@ test('add throws when media queries are nested within a pseudo selector', () => 
 
   assert.throws(
     () => styleSheet.add(input),
-    /At-rule nested in pseudo selector/
+    /At-rule nested in pseudo selector/,
   );
 });
 
@@ -208,7 +208,7 @@ test('render supports pseudo selectors', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._component{background:yellow;}._component:hover{background:blue;color:black;}'
+    '._component{background:yellow;}._component:hover{background:blue;color:black;}',
   );
 });
 
@@ -225,7 +225,7 @@ test('render converts camel case properties into dash hyphen', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._component{background:#fff;border-color:black;}'
+    '._component{background:#fff;border-color:black;}',
   );
 });
 
@@ -241,7 +241,7 @@ test('render duplicates properties when the value is an array', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._component{display:-webkit-box;display:-moz-box;}'
+    '._component{display:-webkit-box;display:-moz-box;}',
   );
 });
 
@@ -257,7 +257,7 @@ test('render prefixes title case properties with a hyphen', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._component{-webkit-transition:200ms all linear;}'
+    '._component{-webkit-transition:200ms all linear;}',
   );
 });
 
@@ -275,7 +275,7 @@ test('render supports media queries', () => {
 
   assert.equal(
     styleSheet.render(),
-    '@media screen and (min-width:720px){._app{background:black;}}'
+    '@media screen and (min-width:720px){._app{background:black;}}',
   );
 });
 
@@ -295,7 +295,7 @@ test('render supports media queries containing a pseudo selector', () => {
 
   assert.equal(
     styleSheet.render(),
-    '@media screen and (min-width:720px){._app:hover{background:black;}}'
+    '@media screen and (min-width:720px){._app:hover{background:black;}}',
   );
 });
 
@@ -316,7 +316,7 @@ test('render supports nested media queries', () => {
 
   assert.equal(
     styleSheet.render(),
-    '@media screen{._app{background:black;}@media (min-width:700px){._app{background:red;}}}'
+    '@media screen{._app{background:black;}@media (min-width:700px){._app{background:red;}}}',
   );
 });
 
@@ -343,9 +343,9 @@ test('render integration example with breakpoints', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._component{background:#ccc;}._component:hover{background:#777;}' +
-    '@media screen and (min-width:720px){._component{font-size:20;}' +
-    '._component:hover{background:#333;}}'
+    '._component{background:#ccc;}._component:hover{background:#777;}'
+    + '@media screen and (min-width:720px){._component{font-size:20;}'
+    + '._component:hover{background:#333;}}',
   );
 });
 
@@ -368,7 +368,7 @@ test('render integration example with multiple add calls', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._app{background:red;}._component{background:blue;}'
+    '._app{background:red;}._component{background:blue;}',
   );
 });
 
@@ -384,7 +384,7 @@ test('render integration example with configured delimiter', () => {
 
   assert.equal(
     styleSheet.render(),
-    '.___component{background:red;}'
+    '.___component{background:red;}',
   );
 });
 
@@ -400,7 +400,7 @@ test('render integration example with configured appendHash', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._component_2513881194{background:red;}'
+    '._component_2513881194{background:red;}',
   );
 });
 
@@ -416,7 +416,7 @@ test('render integration example with configured appendHash and salt', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._component_1892634500{background:red;}'
+    '._component_1892634500{background:red;}',
   );
 });
 
@@ -432,7 +432,7 @@ test('render integration example with configured appendHash and delimiter', () =
 
   assert.equal(
     styleSheet.render(),
-    '.___component___2513881194{background:red;}'
+    '.___component___2513881194{background:red;}',
   );
 });
 
@@ -448,7 +448,7 @@ test('render integration example with configured hashSelector', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._2513881194{background:red;}'
+    '._2513881194{background:red;}',
   );
 });
 
@@ -464,7 +464,7 @@ test('render integration example with configured hashSelector and salt', () => {
 
   assert.equal(
     styleSheet.render(),
-    '._1892634500{background:red;}'
+    '._1892634500{background:red;}',
   );
 });
 
@@ -480,7 +480,7 @@ test('render integration example with configured prefix id selector', () => {
 
   assert.equal(
     styleSheet.render(),
-    '#_component{background:red;}'
+    '#_component{background:red;}',
   );
 });
 
@@ -496,6 +496,6 @@ test('render integration example supporting tag selectors', () => {
 
   assert.equal(
     styleSheet.render(),
-    'body{background:red;}'
+    'body{background:red;}',
   );
 });

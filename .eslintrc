@@ -2,7 +2,10 @@
   "extends": "airbnb",
   "rules": {
     "no-use-before-define": ["error", { "functions": false }],
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
+    "no-plusplus": 0,
+    "no-prototype-builtins": 0,
+    "no-bitwise": 0
   },
   "globals": {
     "suite": true,

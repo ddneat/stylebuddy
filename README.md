@@ -58,7 +58,7 @@ const css = styleSheet.render();
 
 const styleNode = document.createElement('style');
 document.head.appendChild(styleNode);
-domNode.textContent = css;
+styleNode.textContent = css;
 
 console.log(styles.component);
 // ._component_2513881194
@@ -202,5 +202,5 @@ const css = styleSheet.render();
 
 const styleNode = document.createElement('style');
 document.head.appendChild(styleNode);
-domNode.textContent = css;
+styleNode.textContent = css;
 ```
